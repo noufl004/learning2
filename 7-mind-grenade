@@ -1,0 +1,10 @@
+const numb1=5
+const numb2=10
+
+const addValues=(()=>{
+
+console.log(`sum is ${numb1+numb2}`)
+})
+
+addValues()
+module.export=addValues
