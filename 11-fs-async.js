@@ -26,6 +26,7 @@ readFile("./content/first.txt", "utf8", (err, result) => {
     });
   }
 });
+
 // const second=readFileSync('./content/second.txt','utf8')
 // console.log(first,second)
 // writeFileSync('./content/resultSync.txt',`here is my result ${first},${second}`,{flag:'a'})

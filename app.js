@@ -1,17 +1,29 @@
 const http=require('http');
+
+const {readFile}=require('fs')
+const {createReadStream}=require('fs')
+
+
+
 const server=http.createServer((req,res)=>{
-    if(req.url==='/'){
-        res.end('welocome to our home page');
-        return
-    }
-    if(req.url==='/about'){
-res.end('this about history')
-return
-    }
 
-res.end(`<h1>we can't find the page you are looking for</h1>
-<a href='/'>go back to home page</a>`)
-return
-})
+    const stream=createReadStream("./content/bigFile.txt",'utf8')
+    stream.on('open', (data)=>{
+        stream.pipe(res)
+    })
+    stream.on('error', (err)=>{
+        res.end(err)
+    })
+});
 
-server.listen(5000)
+// const text=readFile('./content/bigFile.txt','utf8',(err,response)=>{
+//     server.on('request',(req,res)=>{
+
+//         res.end(response)
+//         })
+// })
+
+
+
+
+server.listen('5000')
